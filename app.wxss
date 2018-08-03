@@ -1,0 +1,30 @@
+/**app.wxss**/
+@import 'utils/weui.wxss';
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+
+@font-face {
+  font-family: 'iconfont';  /* project id 499403 */
+  src: url('//at.alicdn.com/t/font_499403_1qmnkg4mo7y.eot');
+  src: url('//at.alicdn.com/t/font_499403_1qmnkg4mo7y.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_499403_1qmnkg4mo7y.woff') format('woff'),
+  url('//at.alicdn.com/t/font_499403_1qmnkg4mo7y.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_499403_1qmnkg4mo7y.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-gouwuche:before { content: "\e61c"; }
