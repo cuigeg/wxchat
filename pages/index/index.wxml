@@ -1,4 +1,4 @@
-<import src="../../style/footer.wxml"  />
+<!-- <import src="../../style/footer.wxml"  /> -->
 <view class="page">
     <view class="page__hd i-header">
         <view class="g-bd">

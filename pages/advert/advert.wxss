@@ -1,0 +1,35 @@
+/* pages/advert/advert.wxss */
+.advert {
+  width: 100%;
+  height: 100%;
+}
+.button-top-left {
+  display: inline-block;
+  position: absolute;
+  background: white;
+  left: 20rpx;
+  top: 20rpx;
+  width: 100rpx;
+  height: 60rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  line-height: 30px;
+  opacity: 0.5;
+  font-size: 30rpx;
+}
+
+.button-top-right {
+  display: inline-block;
+  position: absolute;
+  width: 120rpx;
+  height: 60rpx;
+  right: 20rpx;
+  top:20rpx;
+  line-height: 60rpx;
+  background: white;
+  border-radius: 30rpx;
+  text-align: center;
+  border: 1px solid #ccc;
+  opacity: 0.5;
+  font-size: 30rpx;
+}

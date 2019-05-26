@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/advert/advert",
     "pages/index/index",
     "pages/logs/logs",
     "pages/authorize/authorize",
@@ -16,9 +17,8 @@
   "tabBar": {
     "color": "#6e6d6b",
     "selectedColor": "#4a90e2",
-    "borderStyle": "#4a90e2",
+    "borderStyle": "black",
     "backgroundColor": "#fff",
-    "box-shadow": "0 0 6px 0",
     "list": [
       {
         "pagePath": "pages/index/index",

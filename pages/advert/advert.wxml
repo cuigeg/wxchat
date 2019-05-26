@@ -1,0 +1,6 @@
+<!--pages/advert/advert.wxml-->
+<view class='advert'>
+<view class='button-top-left'>{{countdown}}秒</view>
+<view class='button-top-right' bindtap="skip">跳过</view>
+<image style='position:absolute;left:0px;top:0px;width:100%;height:100%;z-Index:-1' src='/images/advert.gif'></image>
+</view>

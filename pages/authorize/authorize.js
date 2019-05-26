@@ -1,4 +1,6 @@
 const app = getApp();
+var api = require('../../config/api.js');
+var util = require('../../utils/util.js');
 Page({
   data: {
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
@@ -27,32 +29,12 @@ Page({
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
       //用户按了允许授权按钮
-      var that = this;
       app.globalData.userInfo = e.detail.userInfo;
       
       //插入登录的用户的相关信息到数据库
-      wx.request({
-        url: app.globalData.urlPath + 'user/add',
-        data: {
-          openid: app.globalData.openid,
-          nickName: e.detail.userInfo.nickName,
-          avatarUrl: e.detail.userInfo.avatarUrl,
-          province: e.detail.userInfo.province,
-          city: e.detail.userInfo.city
-        },
-        header: {
-          'content-type': 'application/json'
-        },
-        success: function (res) {
-          //从数据库获取用户信息
-          // that.queryUsreInfo();
-          console.log("插入小程序登录用户信息成功！");
-        }
-      });
-      //授权成功后，跳转进入小程序首页
-      wx.switchTab({
-        url: '/pages/index/index'
-      })
+      let that = this;
+      that.insertUserInfo(e);
+      
     } else {
       //用户按了拒绝按钮
       wx.showModal({
@@ -68,20 +50,41 @@ Page({
       })
     }
   },
+  //保存用户信息
+  insertUserInfo: function (res){
+    console.log(8888);
+    var data = {
+      openid: app.globalData.openid,
+      nickName: res.detail.userInfo.nickName,
+      avatarUrl: res.detail.userInfo.avatarUrl,
+      province: res.detail.userInfo.province,
+      city: res.detail.userInfo.city
+    };
+    util.request(api.UserAdd, data, 'POST').then(function (res) {
+      if (res.code === 0) {
+        console.log("小程序登录用户信息成功！");
+
+        //授权成功后，跳转进入小程序首页(正式环境应该在这里)
+        wx.switchTab({
+          url: '/pages/index/index'
+        })
+      }else{
+        that.insertUserInfo(data);
+      }
+    });
+    //授权成功后，跳转进入小程序首页(展示效果用)
+    wx.switchTab({
+      url: '/pages/index/index'
+    })
+  },
   //获取用户信息接口
   queryUsreInfo: function () {
-    wx.request({
-      url: app.globalData.urlPath + 'user/userInfo',
-      data: {
-        openid: app.globalData.openid
-      },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
+    console.log(9999);
+    util.request(api.AuthUserInfo, { openid: app.globalData.openid}).then(function (res) { 
+      if(res.code === 0){
         app.globalData.userInfo = res.data;
       }
-    }) ;
+    })
   },
 
 })
